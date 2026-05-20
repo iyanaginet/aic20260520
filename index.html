@@ -102,6 +102,37 @@
       place-items: center;
     }
 
+    .photo-card {
+      position: relative;
+      width: min(100%, 520px);
+      margin: 0;
+      border: 3px solid #25211b;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fffdf8;
+      box-shadow: 8px 8px 0 #1f8263;
+    }
+
+    .photo-card img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    .photo-card figcaption {
+      position: absolute;
+      left: 16px;
+      bottom: 16px;
+      max-width: calc(100% - 32px);
+      padding: 8px 12px;
+      border: 2px solid #25211b;
+      border-radius: 999px;
+      background: rgba(255, 253, 248, 0.9);
+      font-size: 0.9rem;
+      font-weight: 900;
+    }
+
     .plate {
       position: relative;
       width: min(100%, 460px);
@@ -279,6 +310,248 @@
       color: #fffdf8;
     }
 
+    .sizzle-section {
+      background: #fffdf8;
+    }
+
+    .sizzle-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+      gap: 36px;
+      align-items: center;
+    }
+
+    .sizzle-frame {
+      position: relative;
+      min-height: 380px;
+      border: 3px solid #25211b;
+      border-radius: 8px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 58%, rgba(255, 224, 108, 0.42), transparent 28%),
+        linear-gradient(180deg, #3c3127 0%, #15120f 100%);
+      box-shadow: 8px 8px 0 #cf392f;
+      isolation: isolate;
+    }
+
+    .sizzle-frame.real-video {
+      min-height: auto;
+      aspect-ratio: 16 / 9;
+      background: #15120f;
+    }
+
+    .sizzle-video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .video-shade {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background:
+        linear-gradient(180deg, rgba(21, 18, 15, 0.12), rgba(21, 18, 15, 0.48)),
+        radial-gradient(circle at 50% 54%, transparent 0 45%, rgba(0, 0, 0, 0.34) 100%);
+    }
+
+    .sizzle-frame::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 18% 24%, rgba(255, 255, 255, 0.14), transparent 9%),
+        radial-gradient(circle at 82% 18%, rgba(255, 255, 255, 0.1), transparent 12%),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 80px);
+      opacity: 0.7;
+    }
+
+    .sizzle-badge {
+      position: absolute;
+      left: 18px;
+      top: 18px;
+      z-index: 3;
+      padding: 6px 10px;
+      border: 2px solid #25211b;
+      border-radius: 999px;
+      background: #e5bd53;
+      font-size: 0.86rem;
+      font-weight: 900;
+    }
+
+    .fryer {
+      position: absolute;
+      left: 50%;
+      bottom: 34px;
+      width: min(84%, 560px);
+      height: 190px;
+      border: 6px solid #25211b;
+      border-radius: 42px 42px 24px 24px;
+      background:
+        radial-gradient(ellipse at 50% 28%, #f8d26a 0 18%, #d88c36 38%, #8c531f 72%),
+        #8c531f;
+      transform: translateX(-50%);
+      box-shadow: inset 0 12px 0 rgba(255, 255, 255, 0.18);
+    }
+
+    .fryer::after {
+      content: "";
+      position: absolute;
+      left: 8%;
+      right: 8%;
+      top: 30px;
+      height: 50px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, rgba(255, 255, 255, 0.7) 0 6px, transparent 7px),
+        radial-gradient(circle at 24% 54%, rgba(255, 255, 255, 0.55) 0 5px, transparent 6px),
+        radial-gradient(circle at 74% 38%, rgba(255, 255, 255, 0.5) 0 4px, transparent 5px),
+        rgba(255, 208, 80, 0.72);
+      animation: oil-shimmer 1.4s ease-in-out infinite alternate;
+    }
+
+    .frying-cutlet {
+      position: absolute;
+      left: 50%;
+      bottom: 122px;
+      z-index: 2;
+      width: min(58%, 330px);
+      height: 94px;
+      border: 7px solid #25211b;
+      border-radius: 48% 52% 44% 56%;
+      background:
+        repeating-linear-gradient(90deg, transparent 0 15%, rgba(83, 48, 25, 0.2) 15% 17%),
+        linear-gradient(180deg, #e5bd53 0%, #d88c36 48%, #a65f1f 100%);
+      box-shadow:
+        inset 0 8px 0 rgba(255, 236, 147, 0.6),
+        0 16px 26px rgba(0, 0, 0, 0.24);
+      transform: translateX(-50%) rotate(-2deg);
+      animation: cutlet-fry 1.6s ease-in-out infinite;
+    }
+
+    .crumbs span,
+    .steam span,
+    .bubbles span {
+      position: absolute;
+      display: block;
+      border-radius: 50%;
+    }
+
+    .crumbs span {
+      z-index: 2;
+      width: 8px;
+      height: 8px;
+      background: #f6db77;
+      animation: crumb-pop 1.9s ease-in-out infinite;
+    }
+
+    .crumbs span:nth-child(1) { left: 30%; bottom: 178px; animation-delay: 0s; }
+    .crumbs span:nth-child(2) { left: 42%; bottom: 204px; animation-delay: 0.3s; }
+    .crumbs span:nth-child(3) { left: 60%; bottom: 196px; animation-delay: 0.7s; }
+    .crumbs span:nth-child(4) { left: 72%; bottom: 170px; animation-delay: 1.1s; }
+
+    .bubbles span {
+      z-index: 1;
+      width: 16px;
+      height: 16px;
+      border: 3px solid rgba(255, 255, 255, 0.82);
+      animation: bubble-rise 1.8s ease-out infinite;
+    }
+
+    .bubbles span:nth-child(1) { left: 24%; bottom: 108px; animation-delay: 0s; }
+    .bubbles span:nth-child(2) { left: 35%; bottom: 86px; animation-delay: 0.4s; }
+    .bubbles span:nth-child(3) { left: 51%; bottom: 96px; animation-delay: 0.8s; }
+    .bubbles span:nth-child(4) { left: 67%; bottom: 88px; animation-delay: 0.2s; }
+    .bubbles span:nth-child(5) { left: 77%; bottom: 120px; animation-delay: 1s; }
+
+    .steam span {
+      z-index: 1;
+      width: 22px;
+      height: 76px;
+      border: solid rgba(255, 255, 255, 0.55);
+      border-width: 0 0 0 5px;
+      border-radius: 60% 0 0 60%;
+      opacity: 0;
+      animation: steam-rise 2.8s ease-in-out infinite;
+    }
+
+    .steam span:nth-child(1) { left: 32%; bottom: 208px; animation-delay: 0s; }
+    .steam span:nth-child(2) { left: 48%; bottom: 220px; animation-delay: 0.7s; }
+    .steam span:nth-child(3) { left: 64%; bottom: 208px; animation-delay: 1.3s; }
+
+    @keyframes cutlet-fry {
+      0%,
+      100% {
+        transform: translateX(-50%) translateY(0) rotate(-2deg);
+      }
+
+      50% {
+        transform: translateX(-50%) translateY(-12px) rotate(2deg);
+      }
+    }
+
+    @keyframes oil-shimmer {
+      from {
+        transform: scaleX(0.98);
+        opacity: 0.72;
+      }
+
+      to {
+        transform: scaleX(1.02);
+        opacity: 0.95;
+      }
+    }
+
+    @keyframes bubble-rise {
+      0% {
+        transform: translateY(0) scale(0.6);
+        opacity: 0;
+      }
+
+      20% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-96px) scale(1.28);
+        opacity: 0;
+      }
+    }
+
+    @keyframes crumb-pop {
+      0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 0;
+      }
+
+      35% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-58px) scale(1);
+        opacity: 0;
+      }
+    }
+
+    @keyframes steam-rise {
+      0% {
+        transform: translateY(16px) translateX(0) scaleY(0.6);
+        opacity: 0;
+      }
+
+      25% {
+        opacity: 0.75;
+      }
+
+      100% {
+        transform: translateY(-72px) translateX(18px) scaleY(1.15);
+        opacity: 0;
+      }
+    }
+
     .inner {
       width: min(1040px, 100%);
       margin: 0 auto;
@@ -376,12 +649,31 @@
       }
 
       .profile,
-      .rules {
+      .rules,
+      .sizzle-grid {
         grid-template-columns: 1fr;
       }
 
       .section {
         padding: 56px 20px;
+      }
+
+      .sizzle-frame {
+        min-height: 330px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .fryer::after,
+      .frying-cutlet,
+      .crumbs span,
+      .bubbles span,
+      .steam span {
+        animation: none;
+      }
+
+      .steam span {
+        opacity: 0.35;
       }
     }
   </style>
@@ -395,26 +687,41 @@
         <p class="lead">サクッとした衣、じゅわっとした肉汁、山盛りキャベツ。今日もどこかで、静かにとんかつへ感謝しているオジサンの記録です。</p>
         <div class="actions" aria-label="ページ内リンク">
           <a class="button" href="#profile">オジサンを見る</a>
+          <a class="button secondary" href="#sizzle">揚げたてを見る</a>
           <a class="button secondary" href="#rules">流儀を読む</a>
         </div>
       </div>
 
-      <div class="hero-art" aria-label="とんかつと笑顔のオジサンのイラスト">
-        <div class="plate">
-          <div class="cabbage"></div>
-          <div class="cutlet"></div>
-          <div class="sauce"></div>
+      <div class="hero-art">
+        <figure class="photo-card">
+          <img
+            src="https://cdn.pixabay.com/photo/2020/11/29/13/13/tonkatsu-5787702_1280.jpg"
+            alt="揚げたてのような衣のとんかつと千切りキャベツの写真"
+          >
+          <figcaption>実物のとんかつ写真</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section sizzle-section" id="sizzle">
+      <div class="inner sizzle-grid">
+        <div>
+          <h2>揚げたての瞬間</h2>
+          <p class="note">きつね色の衣を近くで眺める時間。オジサンがいちばん無口になる、揚げたて直後の余韻です。</p>
         </div>
-        <div class="uncle">
-          <div class="head">
-            <div class="hair"></div>
-            <div class="eye left"></div>
-            <div class="eye right"></div>
-            <div class="mustache"></div>
-            <div class="smile"></div>
-          </div>
-          <div class="body"></div>
-          <div class="bowtie"></div>
+        <div class="sizzle-frame real-video" aria-label="揚げたてのカツの衣が見える実写動画">
+          <video
+            class="sizzle-video"
+            autoplay
+            muted
+            loop
+            playsinline
+            poster="https://images.pexels.com/photos/5773999/pexels-photo-5773999.jpeg?auto=compress&cs=tinysrgb&w=1280"
+          >
+            <source src="https://www.pexels.com/download/video/6419990/" type="video/mp4">
+          </video>
+          <div class="video-shade"></div>
+          <div class="sizzle-badge">NOW FRYING</div>
         </div>
       </div>
     </section>
