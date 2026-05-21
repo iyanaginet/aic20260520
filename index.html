@@ -414,6 +414,242 @@
       line-height: 1.7;
     }
 
+    .mascot {
+      display: grid;
+      grid-template-columns: minmax(320px, 0.82fr) minmax(0, 1fr);
+      gap: 46px;
+      align-items: center;
+    }
+
+    .mascot-stage {
+      min-height: 430px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background:
+        linear-gradient(135deg, rgba(36, 107, 87, 0.1), transparent 38%),
+        linear-gradient(180deg, #fffaf2, #ffffff);
+      box-shadow: var(--shadow);
+    }
+
+    .soraemon {
+      position: relative;
+      width: min(276px, 78vw);
+      height: 346px;
+      border: 8px solid var(--ink);
+      border-radius: 34px 34px 46px 46px;
+      background:
+        linear-gradient(180deg, #f8fff9 0 22%, transparent 22%),
+        linear-gradient(180deg, #2f846b 0%, #246b57 100%);
+      box-shadow: inset 0 14px 0 rgba(255, 255, 255, 0.28), 0 24px 46px rgba(29, 35, 38, 0.18);
+    }
+
+    .soraemon::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: -48px;
+      width: 164px;
+      height: 88px;
+      border: 7px solid var(--ink);
+      border-radius: 48px 48px 32px 32px;
+      background:
+        radial-gradient(circle at 22px 20px, #e9f3ff 0 18px, transparent 19px),
+        radial-gradient(circle at calc(100% - 22px) 20px, #e9f3ff 0 18px, transparent 19px),
+        #f7fbff;
+      transform: translateX(-50%);
+    }
+
+    .soraemon::after {
+      content: "そ";
+      position: absolute;
+      left: 50%;
+      top: 132px;
+      display: grid;
+      width: 58px;
+      height: 58px;
+      place-items: center;
+      border: 5px solid var(--ink);
+      border-radius: 50%;
+      color: #fff;
+      background: var(--red);
+      font-size: 1.9rem;
+      font-weight: 900;
+      transform: translateX(-50%);
+    }
+
+    .soraemon-face {
+      position: absolute;
+      left: 50%;
+      top: -21px;
+      z-index: 1;
+      width: 112px;
+      height: 58px;
+      border: 5px solid var(--ink);
+      border-radius: 22px;
+      background: #eaf6ff;
+      transform: translateX(-50%);
+    }
+
+    .soraemon-face::before,
+    .soraemon-face::after {
+      content: "";
+      position: absolute;
+      top: 18px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--ink);
+    }
+
+    .soraemon-face::before {
+      left: 31px;
+    }
+
+    .soraemon-face::after {
+      right: 31px;
+    }
+
+    .soraemon-smile {
+      position: absolute;
+      left: 50%;
+      top: 33px;
+      width: 30px;
+      height: 13px;
+      border-bottom: 4px solid var(--red);
+      border-radius: 0 0 999px 999px;
+      transform: translateX(-50%);
+    }
+
+    .soraemon-shelf {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      height: 58px;
+      border: 5px solid var(--ink);
+      border-radius: 14px;
+      background: #ffffff;
+      box-shadow: inset 0 -10px 0 rgba(215, 166, 66, 0.2);
+    }
+
+    .soraemon-shelf.top {
+      top: 88px;
+    }
+
+    .soraemon-shelf.bottom {
+      top: 202px;
+    }
+
+    .soraemon-shelf::before {
+      content: "";
+      position: absolute;
+      left: 22px;
+      bottom: 11px;
+      width: 54px;
+      height: 16px;
+      border: 4px solid var(--ink);
+      border-radius: 999px;
+      background: #efbf54;
+    }
+
+    .soraemon-shelf::after {
+      content: "";
+      position: absolute;
+      right: 24px;
+      bottom: 10px;
+      width: 46px;
+      height: 22px;
+      border: 4px solid var(--ink);
+      border-radius: 0 0 20px 20px;
+      background: #fffaf2;
+    }
+
+    .soraemon-tray {
+      position: absolute;
+      left: 50%;
+      bottom: 56px;
+      z-index: 2;
+      width: 154px;
+      height: 36px;
+      border: 5px solid var(--ink);
+      border-radius: 14px;
+      background: #e9f3ff;
+      transform: translateX(-50%);
+      box-shadow: inset 0 -8px 0 rgba(36, 107, 87, 0.18);
+    }
+
+    .soraemon-tray::before {
+      content: "TABLE 7";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      color: var(--ink);
+      font-size: 0.8rem;
+      font-weight: 900;
+      transform: translate(-50%, -50%);
+    }
+
+    .soraemon-tray::after {
+      content: none;
+    }
+
+    .soraemon-wheels {
+      position: absolute;
+      left: 50%;
+      bottom: -30px;
+      display: flex;
+      gap: 84px;
+      transform: translateX(-50%);
+    }
+
+    .soraemon-wheels span {
+      width: 38px;
+      height: 38px;
+      border: 7px solid var(--ink);
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: inset 0 0 0 6px #ffffff;
+    }
+
+    .mascot-copy h2 {
+      margin-bottom: 22px;
+    }
+
+    .mascot-copy p {
+      margin-bottom: 0;
+      color: var(--muted);
+      line-height: 1.9;
+      font-weight: 650;
+    }
+
+    .mascot-points {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .mascot-point {
+      min-height: 112px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+    }
+
+    .mascot-point strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--red);
+      font-size: 1.04rem;
+    }
+
+    .mascot-point span {
+      color: var(--muted);
+      line-height: 1.7;
+      font-weight: 700;
+    }
+
     .access {
       display: grid;
       grid-template-columns: minmax(0, 0.8fr) minmax(320px, 1fr);
@@ -587,6 +823,7 @@
 
       .hero,
       .story,
+      .mascot,
       .access,
       .section-heading {
         grid-template-columns: 1fr;
@@ -627,6 +864,10 @@
         grid-template-columns: 1fr;
       }
 
+      .mascot-points {
+        grid-template-columns: 1fr;
+      }
+
       .hero-media {
         min-height: 430px;
       }
@@ -661,6 +902,7 @@
       <div class="nav-links">
         <a href="#menu">献立</a>
         <a href="#story">こだわり</a>
+        <a href="#soraemon">そらえもん</a>
         <a href="#access">店舗情報</a>
       </div>
       <a class="button" href="#access">予約する</a>
@@ -768,6 +1010,56 @@
             <li>キャベツは店内で刻み、香りが立つうちに盛りつけ。</li>
             <li>ソース、塩、辛子味噌で、最後の一切れまで味を変えられます。</li>
           </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="soraemon">
+      <div class="inner mascot">
+        <div class="mascot-stage" aria-label="とんかつキャラクター、そらえもん">
+          <div class="soraemon" role="img" aria-label="棚に料理をのせてテーブルまで運ぶとんかつ配膳ロボット、そらえもん">
+            <span class="soraemon-face">
+              <span class="soraemon-smile"></span>
+            </span>
+            <span class="soraemon-shelf top"></span>
+            <span class="soraemon-shelf bottom"></span>
+            <span class="soraemon-tray"></span>
+            <span class="soraemon-wheels" aria-hidden="true">
+              <span></span>
+              <span></span>
+            </span>
+          </div>
+        </div>
+        <div class="mascot-copy">
+          <p class="eyebrow">TONKATSU CHARACTER</p>
+          <h2>とんかつロボットの「そらえもん」。</h2>
+          <p>超天才で、緑色の服が大好き。できあがった料理を棚にのせ、テーブル番号を受け取ると席の近くまで運んでくれる配膳ロボットです。最近は英語学習に夢中で、配膳しながら小さな英語フレーズも教えてくれる、みんなから愛されるキャラクターです。</p>
+          <div class="mascot-points">
+            <div class="mascot-point">
+              <strong>性格</strong>
+              <span>ひらめきが早い超天才。困った人を見つけるとすぐ助けます。</span>
+            </div>
+            <div class="mascot-point">
+              <strong>お仕事</strong>
+              <span>揚げたての料理を棚にのせ、指定されたテーブルまでていねいに運びます。</span>
+            </div>
+            <div class="mascot-point">
+              <strong>動き方</strong>
+              <span>料理を受け取ってもらうと、自分でホーム位置まで戻ります。</span>
+            </div>
+            <div class="mascot-point">
+              <strong>好きなもの</strong>
+              <span>緑色の服と揚げたての香り。胸の「そ」マークもお気に入り。</span>
+            </div>
+            <div class="mascot-point">
+              <strong>最近の夢中</strong>
+              <span>英語学習。おすすめの一言は「Crispy and happy!」。</span>
+            </div>
+            <div class="mascot-point">
+              <strong>みんなへ</strong>
+              <span>子どもから大人まで、店に来る人みんなに愛されています。</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
