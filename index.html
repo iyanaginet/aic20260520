@@ -434,6 +434,7 @@
     }
 
     .soraemon {
+      --soraemon-scale: 1;
       position: relative;
       width: min(276px, 78vw);
       height: 346px;
@@ -443,6 +444,8 @@
         linear-gradient(180deg, #f8fff9 0 22%, transparent 22%),
         linear-gradient(180deg, #2f846b 0%, #246b57 100%);
       box-shadow: inset 0 14px 0 rgba(255, 255, 255, 0.28), 0 24px 46px rgba(29, 35, 38, 0.18);
+      transform: scale(var(--soraemon-scale));
+      animation: soraemon-drive 3.8s ease-in-out infinite;
     }
 
     .soraemon::before {
@@ -551,6 +554,7 @@
       border: 4px solid var(--ink);
       border-radius: 999px;
       background: #efbf54;
+      animation: tonkatsu-bounce 1.9s ease-in-out infinite;
     }
 
     .soraemon-shelf::after {
@@ -563,6 +567,7 @@
       border: 4px solid var(--ink);
       border-radius: 0 0 20px 20px;
       background: #fffaf2;
+      animation: tonkatsu-bounce 1.9s ease-in-out infinite 0.18s;
     }
 
     .soraemon-tray {
@@ -577,6 +582,7 @@
       background: #e9f3ff;
       transform: translateX(-50%);
       box-shadow: inset 0 -8px 0 rgba(36, 107, 87, 0.18);
+      animation: tray-level 3.8s ease-in-out infinite;
     }
 
     .soraemon-tray::before {
@@ -608,8 +614,63 @@
       height: 38px;
       border: 7px solid var(--ink);
       border-radius: 50%;
-      background: var(--green);
+      background:
+        linear-gradient(90deg, transparent 43%, rgba(255, 255, 255, 0.9) 44% 56%, transparent 57%),
+        linear-gradient(0deg, transparent 43%, rgba(255, 255, 255, 0.9) 44% 56%, transparent 57%),
+        var(--green);
       box-shadow: inset 0 0 0 6px #ffffff;
+      animation: wheel-spin 0.72s linear infinite;
+    }
+
+    @keyframes soraemon-drive {
+      0%,
+      100% {
+        transform: translateX(0) translateY(0) rotate(0deg) scale(var(--soraemon-scale));
+      }
+
+      25% {
+        transform: translateX(8px) translateY(-5px) rotate(0.8deg) scale(var(--soraemon-scale));
+      }
+
+      50% {
+        transform: translateX(0) translateY(0) rotate(0deg) scale(var(--soraemon-scale));
+      }
+
+      75% {
+        transform: translateX(-8px) translateY(-4px) rotate(-0.8deg) scale(var(--soraemon-scale));
+      }
+    }
+
+    @keyframes wheel-spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes tray-level {
+      0%,
+      100% {
+        transform: translateX(-50%) rotate(0deg);
+      }
+
+      25% {
+        transform: translateX(-50%) rotate(-1.2deg);
+      }
+
+      75% {
+        transform: translateX(-50%) rotate(1.2deg);
+      }
+    }
+
+    @keyframes tonkatsu-bounce {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-3px);
+      }
     }
 
     .mascot-copy h2 {
@@ -937,7 +998,7 @@
       }
 
       .soraemon {
-        transform: scale(0.86);
+        --soraemon-scale: 0.86;
       }
 
       .hero-media {
@@ -960,6 +1021,16 @@
       .info-row {
         grid-template-columns: 1fr;
         gap: 6px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .soraemon,
+      .soraemon-tray,
+      .soraemon-wheels span,
+      .soraemon-shelf::before,
+      .soraemon-shelf::after {
+        animation: none;
       }
     }
   </style>
