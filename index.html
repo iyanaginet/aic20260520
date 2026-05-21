@@ -3,769 +3,819 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>とんかつが大好きなオジサン</title>
+  <title>揚げ処 こがね | とんかつ専門店</title>
   <style>
     :root {
       color-scheme: light;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: #25211b;
-      background: #fff8ed;
+      font-family: Inter, "Noto Sans JP", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --ink: #1d2326;
+      --muted: #65706d;
+      --paper: #fffaf2;
+      --surface: #ffffff;
+      --line: #d9d1c4;
+      --red: #b7382f;
+      --green: #246b57;
+      --gold: #d7a642;
+      --charcoal: #202728;
+      --shadow: 0 24px 70px rgba(29, 35, 38, 0.13);
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      min-height: 100vh;
-      background:
-        radial-gradient(circle at 12% 18%, rgba(221, 55, 55, 0.12), transparent 26%),
-        radial-gradient(circle at 86% 10%, rgba(31, 130, 99, 0.12), transparent 24%),
-        linear-gradient(180deg, #fff8ed 0%, #f7ead5 100%);
+      color: var(--ink);
+      background: var(--paper);
     }
 
-    main {
-      overflow: hidden;
+    img {
+      display: block;
+      max-width: 100%;
     }
 
-    .hero {
-      min-height: 92vh;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(320px, 0.85fr);
-      align-items: center;
-      gap: 48px;
-      width: min(1120px, calc(100% - 40px));
+    a {
+      color: inherit;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(29, 35, 38, 0.1);
+      background: rgba(255, 250, 242, 0.92);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav {
+      width: min(1160px, calc(100% - 40px));
+      min-height: 72px;
       margin: 0 auto;
-      padding: 48px 0 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
     }
 
-    .eyebrow {
-      width: fit-content;
-      margin: 0 0 18px;
-      padding: 7px 12px;
-      border: 1px solid #cf392f;
-      border-radius: 999px;
-      color: #9b251f;
-      background: #fffdf8;
-      font-size: 0.92rem;
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-weight: 900;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 40px;
+      height: 40px;
+      place-items: center;
+      border-radius: 8px;
+      color: #fff;
+      background: var(--red);
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .brand small {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 0.74rem;
       font-weight: 700;
     }
 
-    h1 {
-      margin: 0;
-      font-size: clamp(3rem, 7vw, 6.8rem);
-      line-height: 0.95;
-      letter-spacing: 0;
-    }
-
-    .lead {
-      max-width: 680px;
-      margin: 24px 0 0;
-      color: #5d554b;
-      font-size: clamp(1.08rem, 2.2vw, 1.35rem);
-      line-height: 1.9;
-    }
-
-    .actions {
+    .nav-links {
       display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 32px;
+      align-items: center;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 0.94rem;
+      font-weight: 800;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      color: var(--red);
     }
 
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 48px;
+      min-height: 46px;
       padding: 0 18px;
-      border: 2px solid #25211b;
+      border: 2px solid var(--ink);
       border-radius: 8px;
-      color: #fffdf8;
-      background: #25211b;
-      box-shadow: 4px 4px 0 #cf392f;
-      font-weight: 800;
+      color: #fff;
+      background: var(--ink);
+      font-weight: 900;
       text-decoration: none;
+      box-shadow: 4px 4px 0 var(--gold);
     }
 
     .button.secondary {
-      color: #25211b;
-      background: #fffdf8;
-      box-shadow: 4px 4px 0 #1f8263;
+      color: var(--ink);
+      background: var(--surface);
+      box-shadow: 4px 4px 0 var(--green);
     }
 
-    .hero-art {
-      position: relative;
-      min-height: 560px;
+    .hero {
+      width: min(1160px, calc(100% - 40px));
+      min-height: calc(100vh - 72px);
+      margin: 0 auto;
       display: grid;
-      place-items: center;
-    }
-
-    .photo-card {
-      position: relative;
-      width: min(100%, 520px);
-      margin: 0;
-      border: 3px solid #25211b;
-      border-radius: 8px;
-      overflow: hidden;
-      background: #fffdf8;
-      box-shadow: 8px 8px 0 #1f8263;
-    }
-
-    .photo-card img {
-      display: block;
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-    }
-
-    .photo-card figcaption {
-      position: absolute;
-      left: 16px;
-      bottom: 16px;
-      max-width: calc(100% - 32px);
-      padding: 8px 12px;
-      border: 2px solid #25211b;
-      border-radius: 999px;
-      background: rgba(255, 253, 248, 0.9);
-      font-size: 0.9rem;
-      font-weight: 900;
-    }
-
-    .plate {
-      position: relative;
-      width: min(100%, 460px);
-      aspect-ratio: 1 / 1;
-      border-radius: 50%;
-      background: #fffefa;
-      box-shadow:
-        inset 0 0 0 18px #e7ded0,
-        0 24px 50px rgba(79, 54, 31, 0.18);
-    }
-
-    .cutlet {
-      position: absolute;
-      left: 16%;
-      top: 32%;
-      width: 68%;
-      height: 28%;
-      border-radius: 48% 52% 46% 54%;
-      background:
-        repeating-linear-gradient(90deg, transparent 0 15%, rgba(83, 48, 25, 0.18) 15% 17%),
-        linear-gradient(180deg, #d88c36 0%, #b96c22 100%);
-      border: 8px solid #8c531f;
-      box-shadow: inset 0 8px 0 rgba(255, 227, 146, 0.55);
-      transform: rotate(-5deg);
-    }
-
-    .cabbage {
-      position: absolute;
-      right: 14%;
-      top: 20%;
-      width: 28%;
-      height: 18%;
-      border-radius: 55% 45% 48% 52%;
-      background:
-        linear-gradient(135deg, transparent 0 12%, rgba(36, 118, 63, 0.3) 13% 15%, transparent 16%),
-        #91c968;
-      box-shadow:
-        -26px 10px 0 #b7dc7a,
-        -6px 26px 0 #74b957,
-        20px 20px 0 #a4d56d;
-    }
-
-    .sauce {
-      position: absolute;
-      left: 28%;
-      top: 42%;
-      width: 45%;
-      height: 10%;
-      border-radius: 999px;
-      background: rgba(74, 33, 20, 0.9);
-      transform: rotate(-4deg);
-    }
-
-    .uncle {
-      position: absolute;
-      left: 50%;
-      bottom: 8px;
-      width: 210px;
-      height: 250px;
-      transform: translateX(-50%);
-    }
-
-    .head {
-      position: absolute;
-      left: 50%;
-      top: 8px;
-      width: 118px;
-      height: 118px;
-      border: 5px solid #25211b;
-      border-radius: 50%;
-      background: #f1c39a;
-      transform: translateX(-50%);
-      box-shadow: inset 0 -12px 0 rgba(124, 78, 43, 0.12);
-    }
-
-    .hair {
-      position: absolute;
-      left: 50%;
-      top: -2px;
-      width: 86px;
-      height: 38px;
-      border-radius: 50% 50% 36% 36%;
-      background: #4a4038;
-      transform: translateX(-50%);
-    }
-
-    .eye {
-      position: absolute;
-      top: 48px;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #25211b;
-    }
-
-    .eye.left {
-      left: 33px;
-    }
-
-    .eye.right {
-      right: 33px;
-    }
-
-    .mustache {
-      position: absolute;
-      left: 50%;
-      top: 70px;
-      width: 48px;
-      height: 16px;
-      border-radius: 999px;
-      background: #4a4038;
-      transform: translateX(-50%);
-    }
-
-    .smile {
-      position: absolute;
-      left: 50%;
-      top: 84px;
-      width: 34px;
-      height: 16px;
-      border-bottom: 4px solid #9b251f;
-      border-radius: 0 0 999px 999px;
-      transform: translateX(-50%);
-    }
-
-    .body {
-      position: absolute;
-      left: 50%;
-      top: 118px;
-      width: 160px;
-      height: 116px;
-      border: 5px solid #25211b;
-      border-radius: 42px 42px 18px 18px;
-      background: #1f8263;
-      transform: translateX(-50%);
-    }
-
-    .bowtie {
-      position: absolute;
-      left: 50%;
-      top: 130px;
-      width: 48px;
-      height: 24px;
-      transform: translateX(-50%);
-    }
-
-    .bowtie::before,
-    .bowtie::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      width: 24px;
-      height: 24px;
-      border-radius: 50% 8px 50% 8px;
-      background: #cf392f;
-    }
-
-    .bowtie::before {
-      left: 0;
-      transform: rotate(45deg);
-    }
-
-    .bowtie::after {
-      right: 0;
-      transform: rotate(225deg);
-    }
-
-    .section {
-      padding: 72px 20px;
-      background: #fffdf8;
-    }
-
-    .section.alt {
-      background: #25211b;
-      color: #fffdf8;
-    }
-
-    .sizzle-section {
-      background: #fffdf8;
-    }
-
-    .sizzle-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
-      gap: 36px;
+      grid-template-columns: minmax(0, 0.95fr) minmax(360px, 1.05fr);
       align-items: center;
+      gap: 48px;
+      padding: 56px 0 36px;
     }
 
-    .sizzle-frame {
-      position: relative;
-      min-height: 380px;
-      border: 3px solid #25211b;
-      border-radius: 8px;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 50% 58%, rgba(255, 224, 108, 0.42), transparent 28%),
-        linear-gradient(180deg, #3c3127 0%, #15120f 100%);
-      box-shadow: 8px 8px 0 #cf392f;
-      isolation: isolate;
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 18px;
+      color: var(--red);
+      font-size: 0.92rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
     }
 
-    .sizzle-frame.real-video {
-      min-height: auto;
-      aspect-ratio: 16 / 9;
-      background: #15120f;
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 2px;
+      background: var(--red);
     }
 
-    .sizzle-video {
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 720px;
+      margin-bottom: 22px;
+      font-size: clamp(3.1rem, 7.8vw, 7.1rem);
+      line-height: 0.95;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 620px;
+      margin-bottom: 30px;
+      color: #47504d;
+      font-size: clamp(1.05rem, 2vw, 1.28rem);
+      line-height: 1.9;
+      font-weight: 650;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+    }
+
+    .hero-meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      max-width: 620px;
+      margin-top: 38px;
+    }
+
+    .meta-item {
+      min-height: 96px;
+      padding: 16px;
+      border-top: 3px solid var(--green);
+      background: rgba(255, 255, 255, 0.68);
+    }
+
+    .meta-item strong {
       display: block;
+      margin-bottom: 6px;
+      font-size: 1.25rem;
+    }
+
+    .meta-item span {
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 700;
+      line-height: 1.6;
+    }
+
+    .hero-media {
+      position: relative;
+      min-height: 640px;
+    }
+
+    .hero-photo {
+      position: absolute;
+      inset: 0 0 72px 58px;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      background: #111;
+    }
+
+    .hero-photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
-    .video-shade {
+    .hours-panel {
       position: absolute;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-      background:
-        linear-gradient(180deg, rgba(21, 18, 15, 0.12), rgba(21, 18, 15, 0.48)),
-        radial-gradient(circle at 50% 54%, transparent 0 45%, rgba(0, 0, 0, 0.34) 100%);
+      left: 0;
+      bottom: 0;
+      width: min(420px, 86%);
+      padding: 22px;
+      border: 1px solid rgba(29, 35, 38, 0.12);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
     }
 
-    .sizzle-frame::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 18% 24%, rgba(255, 255, 255, 0.14), transparent 9%),
-        radial-gradient(circle at 82% 18%, rgba(255, 255, 255, 0.1), transparent 12%),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 80px);
-      opacity: 0.7;
+    .hours-panel h2 {
+      margin-bottom: 12px;
+      font-size: 1.15rem;
     }
 
-    .sizzle-badge {
-      position: absolute;
-      left: 18px;
-      top: 18px;
-      z-index: 3;
-      padding: 6px 10px;
-      border: 2px solid #25211b;
-      border-radius: 999px;
-      background: #e5bd53;
-      font-size: 0.86rem;
-      font-weight: 900;
+    .hours-panel dl {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 10px 18px;
+      margin: 0;
+      color: var(--muted);
+      font-weight: 750;
     }
 
-    .fryer {
-      position: absolute;
-      left: 50%;
-      bottom: 34px;
-      width: min(84%, 560px);
-      height: 190px;
-      border: 6px solid #25211b;
-      border-radius: 42px 42px 24px 24px;
-      background:
-        radial-gradient(ellipse at 50% 28%, #f8d26a 0 18%, #d88c36 38%, #8c531f 72%),
-        #8c531f;
-      transform: translateX(-50%);
-      box-shadow: inset 0 12px 0 rgba(255, 255, 255, 0.18);
+    .hours-panel dd {
+      margin: 0;
+      color: var(--ink);
+      text-align: right;
     }
 
-    .fryer::after {
-      content: "";
-      position: absolute;
-      left: 8%;
-      right: 8%;
-      top: 30px;
-      height: 50px;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle, rgba(255, 255, 255, 0.7) 0 6px, transparent 7px),
-        radial-gradient(circle at 24% 54%, rgba(255, 255, 255, 0.55) 0 5px, transparent 6px),
-        radial-gradient(circle at 74% 38%, rgba(255, 255, 255, 0.5) 0 4px, transparent 5px),
-        rgba(255, 208, 80, 0.72);
-      animation: oil-shimmer 1.4s ease-in-out infinite alternate;
+    .section {
+      padding: 86px 20px;
+      background: var(--surface);
     }
 
-    .frying-cutlet {
-      position: absolute;
-      left: 50%;
-      bottom: 122px;
-      z-index: 2;
-      width: min(58%, 330px);
-      height: 94px;
-      border: 7px solid #25211b;
-      border-radius: 48% 52% 44% 56%;
-      background:
-        repeating-linear-gradient(90deg, transparent 0 15%, rgba(83, 48, 25, 0.2) 15% 17%),
-        linear-gradient(180deg, #e5bd53 0%, #d88c36 48%, #a65f1f 100%);
-      box-shadow:
-        inset 0 8px 0 rgba(255, 236, 147, 0.6),
-        0 16px 26px rgba(0, 0, 0, 0.24);
-      transform: translateX(-50%) rotate(-2deg);
-      animation: cutlet-fry 1.6s ease-in-out infinite;
+    .section.tint {
+      background: #f3f7f1;
     }
 
-    .crumbs span,
-    .steam span,
-    .bubbles span {
-      position: absolute;
-      display: block;
-      border-radius: 50%;
-    }
-
-    .crumbs span {
-      z-index: 2;
-      width: 8px;
-      height: 8px;
-      background: #f6db77;
-      animation: crumb-pop 1.9s ease-in-out infinite;
-    }
-
-    .crumbs span:nth-child(1) { left: 30%; bottom: 178px; animation-delay: 0s; }
-    .crumbs span:nth-child(2) { left: 42%; bottom: 204px; animation-delay: 0.3s; }
-    .crumbs span:nth-child(3) { left: 60%; bottom: 196px; animation-delay: 0.7s; }
-    .crumbs span:nth-child(4) { left: 72%; bottom: 170px; animation-delay: 1.1s; }
-
-    .bubbles span {
-      z-index: 1;
-      width: 16px;
-      height: 16px;
-      border: 3px solid rgba(255, 255, 255, 0.82);
-      animation: bubble-rise 1.8s ease-out infinite;
-    }
-
-    .bubbles span:nth-child(1) { left: 24%; bottom: 108px; animation-delay: 0s; }
-    .bubbles span:nth-child(2) { left: 35%; bottom: 86px; animation-delay: 0.4s; }
-    .bubbles span:nth-child(3) { left: 51%; bottom: 96px; animation-delay: 0.8s; }
-    .bubbles span:nth-child(4) { left: 67%; bottom: 88px; animation-delay: 0.2s; }
-    .bubbles span:nth-child(5) { left: 77%; bottom: 120px; animation-delay: 1s; }
-
-    .steam span {
-      z-index: 1;
-      width: 22px;
-      height: 76px;
-      border: solid rgba(255, 255, 255, 0.55);
-      border-width: 0 0 0 5px;
-      border-radius: 60% 0 0 60%;
-      opacity: 0;
-      animation: steam-rise 2.8s ease-in-out infinite;
-    }
-
-    .steam span:nth-child(1) { left: 32%; bottom: 208px; animation-delay: 0s; }
-    .steam span:nth-child(2) { left: 48%; bottom: 220px; animation-delay: 0.7s; }
-    .steam span:nth-child(3) { left: 64%; bottom: 208px; animation-delay: 1.3s; }
-
-    @keyframes cutlet-fry {
-      0%,
-      100% {
-        transform: translateX(-50%) translateY(0) rotate(-2deg);
-      }
-
-      50% {
-        transform: translateX(-50%) translateY(-12px) rotate(2deg);
-      }
-    }
-
-    @keyframes oil-shimmer {
-      from {
-        transform: scaleX(0.98);
-        opacity: 0.72;
-      }
-
-      to {
-        transform: scaleX(1.02);
-        opacity: 0.95;
-      }
-    }
-
-    @keyframes bubble-rise {
-      0% {
-        transform: translateY(0) scale(0.6);
-        opacity: 0;
-      }
-
-      20% {
-        opacity: 1;
-      }
-
-      100% {
-        transform: translateY(-96px) scale(1.28);
-        opacity: 0;
-      }
-    }
-
-    @keyframes crumb-pop {
-      0% {
-        transform: translateY(0) scale(0.5);
-        opacity: 0;
-      }
-
-      35% {
-        opacity: 1;
-      }
-
-      100% {
-        transform: translateY(-58px) scale(1);
-        opacity: 0;
-      }
-    }
-
-    @keyframes steam-rise {
-      0% {
-        transform: translateY(16px) translateX(0) scaleY(0.6);
-        opacity: 0;
-      }
-
-      25% {
-        opacity: 0.75;
-      }
-
-      100% {
-        transform: translateY(-72px) translateX(18px) scaleY(1.15);
-        opacity: 0;
-      }
+    .section.dark {
+      color: #fff;
+      background: var(--charcoal);
     }
 
     .inner {
-      width: min(1040px, 100%);
+      width: min(1100px, 100%);
       margin: 0 auto;
     }
 
+    .section-heading {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(280px, 0.7fr);
+      gap: 36px;
+      align-items: end;
+      margin-bottom: 34px;
+    }
+
     h2 {
-      margin: 0 0 22px;
-      font-size: clamp(2rem, 4vw, 3.4rem);
-      line-height: 1.1;
+      margin-bottom: 0;
+      font-size: clamp(2rem, 4vw, 4rem);
+      line-height: 1.08;
       letter-spacing: 0;
     }
 
-    .profile {
+    .section-heading p,
+    .story-copy p,
+    .access-copy p {
+      margin-bottom: 0;
+      color: var(--muted);
+      line-height: 1.9;
+      font-weight: 650;
+    }
+
+    .dark .section-heading p,
+    .dark .access-copy p {
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .menu-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
-      margin-top: 34px;
     }
 
-    .profile article {
-      min-height: 180px;
-      padding: 24px;
-      border: 2px solid #25211b;
+    .menu-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
       border-radius: 8px;
-      background: #fff8ed;
-      box-shadow: 6px 6px 0 #e5bd53;
+      background: var(--surface);
     }
 
-    .profile h3 {
-      margin: 0 0 10px;
-      font-size: 1.2rem;
+    .menu-card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
     }
 
-    .profile p,
-    .note {
-      margin: 0;
-      color: #5d554b;
-      line-height: 1.8;
+    .menu-body {
+      padding: 20px;
     }
 
-    .rules {
+    .menu-card h3 {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+      font-size: 1.22rem;
+    }
+
+    .menu-card h3 span {
+      color: var(--red);
+      white-space: nowrap;
+    }
+
+    .menu-card p {
+      margin-bottom: 16px;
+      color: var(--muted);
+      line-height: 1.75;
+      font-weight: 630;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      padding: 6px 9px;
+      border-radius: 999px;
+      color: var(--green);
+      background: #e7f1ec;
+      font-size: 0.8rem;
+      font-weight: 900;
+    }
+
+    .story {
       display: grid;
-      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-      gap: 36px;
-      align-items: start;
+      grid-template-columns: minmax(320px, 0.92fr) minmax(0, 1fr);
+      gap: 48px;
+      align-items: center;
     }
 
-    .rule-list {
+    .story-photo {
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .story-photo img {
+      width: 100%;
+      aspect-ratio: 5 / 4;
+      object-fit: cover;
+    }
+
+    .story-copy h2 {
+      margin-bottom: 24px;
+    }
+
+    .feature-list {
       display: grid;
       gap: 14px;
-      margin: 0;
+      margin: 28px 0 0;
       padding: 0;
       list-style: none;
     }
 
-    .rule-list li {
-      padding: 18px 20px;
-      border-left: 7px solid #e5bd53;
-      background: rgba(255, 253, 248, 0.08);
+    .feature-list li {
+      padding: 16px 18px;
+      border-left: 5px solid var(--gold);
+      background: rgba(255, 255, 255, 0.7);
+      color: #3e4744;
+      font-weight: 750;
+      line-height: 1.7;
+    }
+
+    .access {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(320px, 1fr);
+      gap: 46px;
+      align-items: stretch;
+    }
+
+    .access-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .access-copy h2 {
+      margin-bottom: 22px;
+    }
+
+    .info-table {
+      display: grid;
+      gap: 1px;
+      margin-top: 30px;
+      overflow: hidden;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    .info-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 18px;
+      padding: 16px 18px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .info-row dt {
+      color: rgba(255, 255, 255, 0.62);
+      font-weight: 900;
+    }
+
+    .info-row dd {
+      margin: 0;
+      color: #fff;
+      font-weight: 780;
+      line-height: 1.7;
+    }
+
+    .map-panel {
+      min-height: 430px;
+      border-radius: 8px;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+        #2f3939;
+      background-size: 42px 42px;
+      position: relative;
+    }
+
+    .route-line {
+      position: absolute;
+      left: 12%;
+      right: 10%;
+      top: 48%;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--gold);
+      transform: rotate(-10deg);
+    }
+
+    .route-line::before,
+    .route-line::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 22px;
+      height: 22px;
+      border: 5px solid var(--gold);
+      border-radius: 50%;
+      background: var(--charcoal);
+      transform: translateY(-50%);
+    }
+
+    .route-line::before {
+      left: -6px;
+    }
+
+    .route-line::after {
+      right: -6px;
+    }
+
+    .station,
+    .shop-pin {
+      position: absolute;
+      padding: 9px 12px;
+      border-radius: 8px;
+      color: var(--ink);
+      background: #fff;
+      font-weight: 900;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+    }
+
+    .station {
+      left: 12%;
+      top: 56%;
+    }
+
+    .shop-pin {
+      right: 9%;
+      top: 27%;
+      color: #fff;
+      background: var(--red);
+    }
+
+    .shop-pin::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -10px;
+      width: 16px;
+      height: 16px;
+      background: var(--red);
+      transform: translateX(-50%) rotate(45deg);
+    }
+
+    .cta {
+      padding: 76px 20px;
+      background: var(--gold);
+    }
+
+    .cta .inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .cta h2 {
+      max-width: 720px;
+      font-size: clamp(2rem, 4.5vw, 4.4rem);
+    }
+
+    .cta p {
+      max-width: 520px;
+      margin: 16px 0 0;
       line-height: 1.8;
+      font-weight: 750;
     }
 
-    .signoff {
-      padding: 64px 20px 80px;
-      text-align: center;
-      background: #f7ead5;
+    .footer {
+      padding: 34px 20px;
+      color: rgba(255, 255, 255, 0.72);
+      background: #15191a;
+      font-size: 0.92rem;
+      font-weight: 700;
     }
 
-    .signoff p {
-      width: min(720px, 100%);
-      margin: 16px auto 0;
-      color: #5d554b;
-      line-height: 1.9;
+    .footer .inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
     }
 
-    @media (max-width: 820px) {
-      .hero {
-        min-height: auto;
-        grid-template-columns: 1fr;
-        gap: 18px;
-        padding-top: 36px;
+    @media (max-width: 900px) {
+      .nav {
+        width: min(100% - 28px, 1160px);
       }
 
-      .hero-art {
+      .nav-links {
+        display: none;
+      }
+
+      .hero,
+      .story,
+      .access,
+      .section-heading {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+        width: min(100% - 28px, 1160px);
+        gap: 30px;
+        padding-top: 42px;
+      }
+
+      .hero-media {
+        min-height: 520px;
+      }
+
+      .hero-photo {
+        inset: 0 0 80px 24px;
+      }
+
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta .inner,
+      .footer .inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .brand small {
+        display: none;
+      }
+
+      .hero-meta {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-media {
         min-height: 430px;
       }
 
-      .plate {
-        width: min(100%, 360px);
+      .hero-photo {
+        inset: 0 0 96px 0;
       }
 
-      .uncle {
-        transform: translateX(-50%) scale(0.78);
-        transform-origin: bottom center;
+      .hours-panel {
+        width: 100%;
       }
 
-      .profile,
-      .rules,
-      .sizzle-grid {
+      .section,
+      .cta {
+        padding: 62px 16px;
+      }
+
+      .info-row {
         grid-template-columns: 1fr;
-      }
-
-      .section {
-        padding: 56px 20px;
-      }
-
-      .sizzle-frame {
-        min-height: 330px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .fryer::after,
-      .frying-cutlet,
-      .crumbs span,
-      .bubbles span,
-      .steam span {
-        animation: none;
-      }
-
-      .steam span {
-        opacity: 0.35;
+        gap: 6px;
       }
     }
   </style>
 </head>
 <body>
+  <header class="site-header">
+    <nav class="nav" aria-label="主要ナビゲーション">
+      <a class="brand" href="#">
+        <span class="brand-mark">こ</span>
+        <span>揚げ処 こがね<small>TONKATSU RESTAURANT</small></span>
+      </a>
+      <div class="nav-links">
+        <a href="#menu">献立</a>
+        <a href="#story">こだわり</a>
+        <a href="#access">店舗情報</a>
+      </div>
+      <a class="button" href="#access">予約する</a>
+    </nav>
+  </header>
+
   <main>
     <section class="hero" aria-labelledby="site-title">
       <div>
-        <p class="eyebrow">揚げたてを愛する個人サイト</p>
-        <h1 id="site-title">とんかつが大好きなオジサン</h1>
-        <p class="lead">サクッとした衣、じゅわっとした肉汁、山盛りキャベツ。今日もどこかで、静かにとんかつへ感謝しているオジサンの記録です。</p>
-        <div class="actions" aria-label="ページ内リンク">
-          <a class="button" href="#profile">オジサンを見る</a>
-          <a class="button secondary" href="#sizzle">揚げたてを見る</a>
-          <a class="button secondary" href="#rules">流儀を読む</a>
+        <p class="eyebrow">東京・神田のとんかつ専門店</p>
+        <h1 id="site-title">揚げたてを、今日の主役に。</h1>
+        <p class="lead">低温でじっくり火を入れ、高温で軽く仕上げる二段揚げ。香ばしい衣としっとりした肉の余韻を、落ち着いたカウンターで味わえます。</p>
+        <div class="hero-actions">
+          <a class="button" href="#menu">献立を見る</a>
+          <a class="button secondary" href="#story">こだわりを読む</a>
+        </div>
+        <div class="hero-meta" aria-label="店舗の特徴">
+          <div class="meta-item">
+            <strong>11:30</strong>
+            <span>昼の営業開始。数量限定の厚切りも用意。</span>
+          </div>
+          <div class="meta-item">
+            <strong>2段揚げ</strong>
+            <span>中心までやわらかく、衣は軽く香ばしく。</span>
+          </div>
+          <div class="meta-item">
+            <strong>徒歩4分</strong>
+            <span>神田駅東口からまっすぐ歩いてすぐ。</span>
+          </div>
         </div>
       </div>
 
-      <div class="hero-art">
-        <figure class="photo-card">
-          <img
-            src="https://cdn.pixabay.com/photo/2020/11/29/13/13/tonkatsu-5787702_1280.jpg"
-            alt="揚げたてのような衣のとんかつと千切りキャベツの写真"
-          >
-          <figcaption>実物のとんかつ写真</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="section sizzle-section" id="sizzle">
-      <div class="inner sizzle-grid">
-        <div>
-          <h2>揚げたての瞬間</h2>
-          <p class="note">きつね色の衣を近くで眺める時間。オジサンがいちばん無口になる、揚げたて直後の余韻です。</p>
+      <div class="hero-media" aria-label="揚げたてのとんかつ写真">
+        <div class="hero-photo">
+          <img src="https://cdn.pixabay.com/photo/2020/11/29/13/13/tonkatsu-5787702_1280.jpg" alt="皿に盛られたとんかつと千切りキャベツ">
         </div>
-        <div class="sizzle-frame real-video" aria-label="揚げたてのカツの衣が見える実写動画">
-          <video
-            class="sizzle-video"
-            autoplay
-            muted
-            loop
-            playsinline
-            poster="https://images.pexels.com/photos/5773999/pexels-photo-5773999.jpeg?auto=compress&cs=tinysrgb&w=1280"
-          >
-            <source src="https://www.pexels.com/download/video/6419990/" type="video/mp4">
-          </video>
-          <div class="video-shade"></div>
-          <div class="sizzle-badge">NOW FRYING</div>
-        </div>
+        <aside class="hours-panel" aria-label="営業時間">
+          <h2>本日の営業</h2>
+          <dl>
+            <dt>昼</dt>
+            <dd>11:30 - 14:30</dd>
+            <dt>夜</dt>
+            <dd>17:30 - 21:00</dd>
+            <dt>定休日</dt>
+            <dd>日曜・月曜</dd>
+          </dl>
+        </aside>
       </div>
     </section>
 
-    <section class="section" id="profile">
+    <section class="section" id="menu">
       <div class="inner">
-        <h2>オジサンのこと</h2>
-        <p class="note">派手な評論家ではありません。昼どきの暖簾をくぐり、黙って一口目を味わうタイプの人です。</p>
-        <div class="profile">
-          <article>
-            <h3>好きな音</h3>
-            <p>包丁が衣を切る「ザクッ」。この音だけでご飯を半分いけます。</p>
+        <div class="section-heading">
+          <h2>定番を、少しだけ特別に。</h2>
+          <p>昼は軽やかに、夜はゆっくり。銘柄豚、パン粉、米、味噌汁まで、ひと皿の流れが整う献立にしています。</p>
+        </div>
+        <div class="menu-grid">
+          <article class="menu-card">
+            <img src="https://images.pexels.com/photos/5773999/pexels-photo-5773999.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="揚げ色のよいカツのアップ">
+            <div class="menu-body">
+              <h3>上ロース定食 <span>1,680円</span></h3>
+              <p>脂の甘みと赤身のうまみをバランスよく味わえる一番人気。</p>
+              <div class="tag-row">
+                <span class="tag">ご飯おかわり可</span>
+                <span class="tag">昼夜提供</span>
+              </div>
+            </div>
           </article>
-          <article>
-            <h3>好きな並び</h3>
-            <p>とんかつ、キャベツ、からし、ソース。皿の上にある小さな秩序を大切にします。</p>
+          <article class="menu-card">
+            <img src="https://images.unsplash.com/photo-1625937286074-9ca519d5d9df?auto=format&fit=crop&w=1200&q=80" alt="カットされた豚カツの定食">
+            <div class="menu-body">
+              <h3>厚切り特選 <span>2,480円</span></h3>
+              <p>じっくり休ませて仕上げる数量限定。塩で一切れ目をどうぞ。</p>
+              <div class="tag-row">
+                <span class="tag">数量限定</span>
+                <span class="tag">低温調理</span>
+              </div>
+            </div>
           </article>
-          <article>
-            <h3>好きな時間</h3>
-            <p>平日の昼、少し早めの入店。揚げ場の音が聞こえる席が特等席です。</p>
+          <article class="menu-card">
+            <img src="https://images.unsplash.com/photo-1604909052743-94e838986d24?auto=format&fit=crop&w=1200&q=80" alt="木の器に入った千切りキャベツと食事">
+            <div class="menu-body">
+              <h3>ひれかつ膳 <span>1,920円</span></h3>
+              <p>やわらかな肉質と軽い後味。夜の一杯にも合わせやすい膳です。</p>
+              <div class="tag-row">
+                <span class="tag">赤身中心</span>
+                <span class="tag">辛子味噌つき</span>
+              </div>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section alt" id="rules">
-      <div class="inner rules">
+    <section class="section tint" id="story">
+      <div class="inner story">
+        <div class="story-photo">
+          <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=1200&q=80" alt="厨房で料理を仕上げる手元">
+        </div>
+        <div class="story-copy">
+          <h2>音までおいしい店にする。</h2>
+          <p>パン粉は粗さの違う二種類を合わせ、油は毎朝状態を見て調整します。注文ごとに揚げ、切り、盛りつける。派手な演出より、食べ終わった後の軽さを大切にしています。</p>
+          <ul class="feature-list">
+            <li>肉は部位ごとに厚みを変え、火入れの時間を細かく調整。</li>
+            <li>キャベツは店内で刻み、香りが立つうちに盛りつけ。</li>
+            <li>ソース、塩、辛子味噌で、最後の一切れまで味を変えられます。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark" id="access">
+      <div class="inner access">
+        <div class="access-copy">
+          <h2>仕事帰りにも、週末の昼にも。</h2>
+          <p>カウンター10席、テーブル12席。夜は席の取り置きができます。揚げ時間がかかるため、厚切り特選は予約時にお知らせください。</p>
+          <dl class="info-table">
+            <div class="info-row">
+              <dt>住所</dt>
+              <dd>東京都千代田区鍛冶町 1-8-3</dd>
+            </div>
+            <div class="info-row">
+              <dt>電話</dt>
+              <dd>03-0000-4929</dd>
+            </div>
+            <div class="info-row">
+              <dt>席数</dt>
+              <dd>22席 / 全席禁煙</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="map-panel" role="img" aria-label="神田駅から店舗までの簡易地図">
+          <div class="route-line"></div>
+          <div class="station">神田駅</div>
+          <div class="shop-pin">揚げ処 こがね</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" aria-labelledby="reservation-title">
+      <div class="inner">
         <div>
-          <h2>とんかつの流儀</h2>
-          <p>むずかしいことは言いません。ただ、最後の一切れまで丁寧に食べたいだけです。</p>
+          <h2 id="reservation-title">今夜の揚げたてを予約する。</h2>
+          <p>当日の席状況は電話でご確認ください。昼のピークは12:00から13:15です。</p>
         </div>
-        <ul class="rule-list">
-          <li>一切れ目は何もつけず、衣と肉の調子を確かめる。</li>
-          <li>キャベツは休憩ではなく、次の一切れを迎える準備。</li>
-          <li>からしは強がりではなく、脂の甘さを引き立てる相棒。</li>
-          <li>食べ終わったら、心の中で揚げ場に一礼する。</li>
-        </ul>
+        <a class="button secondary" href="tel:0300004929">03-0000-4929</a>
       </div>
-    </section>
-
-    <section class="signoff">
-      <h2>今日も、よい揚げ色で。</h2>
-      <p>このサイトは、とんかつが大好きなオジサンの小さな拠点です。次の一皿に出会うまで、ここで静かに衣の余韻を残します。</p>
     </section>
   </main>
+
+  <footer class="footer">
+    <div class="inner">
+      <span>揚げ処 こがね</span>
+      <span>© 2026 Kogane Tonkatsu</span>
+    </div>
+  </footer>
 </body>
 </html>
