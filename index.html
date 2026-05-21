@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>揚げ処 こがね | とんかつ専門店</title>
+  <title>そらえもんの日々 | とんかつ大好きロボットの個人サイト</title>
   <style>
     :root {
       color-scheme: light;
@@ -425,6 +425,7 @@
       min-height: 430px;
       display: grid;
       place-items: center;
+      padding: 64px 24px 46px;
       border-radius: 8px;
       background:
         linear-gradient(135deg, rgba(36, 107, 87, 0.1), transparent 38%),
@@ -650,6 +651,72 @@
       font-weight: 700;
     }
 
+    .video-feature {
+      display: grid;
+      grid-template-columns: minmax(0, 0.72fr) minmax(360px, 1fr);
+      gap: 40px;
+      align-items: center;
+    }
+
+    .video-copy h2 {
+      margin-bottom: 22px;
+    }
+
+    .video-copy p {
+      margin-bottom: 0;
+      color: var(--muted);
+      line-height: 1.9;
+      font-weight: 650;
+    }
+
+    .video-frame {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #101616;
+      box-shadow: var(--shadow);
+      aspect-ratio: 16 / 9;
+    }
+
+    .video-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    .diary-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .diary-entry {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+    }
+
+    .diary-entry time {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--green);
+      font-size: 0.86rem;
+      font-weight: 900;
+    }
+
+    .diary-entry h3 {
+      margin-bottom: 10px;
+      font-size: 1.25rem;
+    }
+
+    .diary-entry p {
+      margin-bottom: 0;
+      color: var(--muted);
+      line-height: 1.8;
+      font-weight: 650;
+    }
+
     .access {
       display: grid;
       grid-template-columns: minmax(0, 0.8fr) minmax(320px, 1fr);
@@ -824,6 +891,7 @@
       .hero,
       .story,
       .mascot,
+      .video-feature,
       .access,
       .section-heading {
         grid-template-columns: 1fr;
@@ -868,6 +936,10 @@
         grid-template-columns: 1fr;
       }
 
+      .soraemon {
+        transform: scale(0.86);
+      }
+
       .hero-media {
         min-height: 430px;
       }
@@ -896,100 +968,124 @@
   <header class="site-header">
     <nav class="nav" aria-label="主要ナビゲーション">
       <a class="brand" href="#">
-        <span class="brand-mark">こ</span>
-        <span>揚げ処 こがね<small>TONKATSU RESTAURANT</small></span>
+        <span class="brand-mark">そ</span>
+        <span>そらえもんの日々<small>TONKATSU ROBOT DIARY</small></span>
       </a>
       <div class="nav-links">
-        <a href="#menu">献立</a>
-        <a href="#story">こだわり</a>
-        <a href="#soraemon">そらえもん</a>
-        <a href="#access">店舗情報</a>
+        <a href="#diary">日記</a>
+        <a href="#favorites">好きなもの</a>
+        <a href="#soraemon">プロフィール</a>
+        <a href="#robot-video">動画メモ</a>
       </div>
-      <a class="button" href="#access">予約する</a>
+      <a class="button" href="#diary">今日の日記</a>
     </nav>
   </header>
 
   <main>
     <section class="hero" aria-labelledby="site-title">
       <div>
-        <p class="eyebrow">東京・神田のとんかつ専門店</p>
-        <h1 id="site-title">揚げたてを、今日の主役に。</h1>
-        <p class="lead">低温でじっくり火を入れ、高温で軽く仕上げる二段揚げ。香ばしい衣としっとりした肉の余韻を、落ち着いたカウンターで味わえます。</p>
+        <p class="eyebrow">とんかつ大好きロボットの個人サイト</p>
+        <h1 id="site-title">そらえもんの日々。</h1>
+        <p class="lead">こんにちは、そらえもんです。緑色の服が好きで、英語を勉強中で、とんかつを見ると計算速度が少し上がる配膳ロボットです。ここには、揚げたてを運んだ日々の記録を残します。</p>
         <div class="hero-actions">
-          <a class="button" href="#menu">献立を見る</a>
-          <a class="button secondary" href="#story">こだわりを読む</a>
+          <a class="button" href="#diary">日記を読む</a>
+          <a class="button secondary" href="#soraemon">プロフィール</a>
         </div>
-        <div class="hero-meta" aria-label="店舗の特徴">
+        <div class="hero-meta" aria-label="そらえもんの特徴">
           <div class="meta-item">
-            <strong>11:30</strong>
-            <span>昼の営業開始。数量限定の厚切りも用意。</span>
+            <strong>超天才</strong>
+            <span>テーブル番号と揚げ時間をすぐ覚えます。</span>
           </div>
           <div class="meta-item">
-            <strong>2段揚げ</strong>
-            <span>中心までやわらかく、衣は軽く香ばしく。</span>
+            <strong>緑色</strong>
+            <span>お気に入りの服は、もちろんグリーン。</span>
           </div>
           <div class="meta-item">
-            <strong>徒歩4分</strong>
-            <span>神田駅東口からまっすぐ歩いてすぐ。</span>
+            <strong>English</strong>
+            <span>最近の口ぐせは「Crispy and happy!」。</span>
           </div>
         </div>
       </div>
 
-      <div class="hero-media" aria-label="揚げたてのとんかつ写真">
-        <div class="hero-photo">
-          <img src="https://cdn.pixabay.com/photo/2020/11/29/13/13/tonkatsu-5787702_1280.jpg" alt="皿に盛られたとんかつと千切りキャベツ">
+      <div class="mascot-stage" aria-label="そらえもんのイラスト">
+        <div class="soraemon" role="img" aria-label="棚に料理をのせてテーブルまで運ぶとんかつ配膳ロボット、そらえもん">
+          <span class="soraemon-face">
+            <span class="soraemon-smile"></span>
+          </span>
+          <span class="soraemon-shelf top"></span>
+          <span class="soraemon-shelf bottom"></span>
+          <span class="soraemon-tray"></span>
+          <span class="soraemon-wheels" aria-hidden="true">
+            <span></span>
+            <span></span>
+          </span>
         </div>
-        <aside class="hours-panel" aria-label="営業時間">
-          <h2>本日の営業</h2>
-          <dl>
-            <dt>昼</dt>
-            <dd>11:30 - 14:30</dd>
-            <dt>夜</dt>
-            <dd>17:30 - 21:00</dd>
-            <dt>定休日</dt>
-            <dd>日曜・月曜</dd>
-          </dl>
-        </aside>
       </div>
     </section>
 
-    <section class="section" id="menu">
+    <section class="section" id="diary">
       <div class="inner">
         <div class="section-heading">
-          <h2>定番を、少しだけ特別に。</h2>
-          <p>昼は軽やかに、夜はゆっくり。銘柄豚、パン粉、米、味噌汁まで、ひと皿の流れが整う献立にしています。</p>
+          <h2>最近の日記。</h2>
+          <p>配膳ロボットとして働きながら、とんかつの音、香り、英語の新しい表現を少しずつ集めています。</p>
+        </div>
+        <div class="diary-list">
+          <article class="diary-entry">
+            <time datetime="2026-05-21">2026.05.21</time>
+            <h3>ロースかつを7番テーブルへ運んだ日</h3>
+            <p>今日はトレーが少し重かったけれど、ソースの小皿を揺らさずに到着できました。お客さんが「ありがとう」と言ってくれて、胸の「そ」マークが少し熱くなりました。</p>
+          </article>
+          <article class="diary-entry">
+            <time datetime="2026-05-20">2026.05.20</time>
+            <h3>英語メモ: crispy</h3>
+            <p>今日覚えた単語は crispy。衣のサクサクにぴったりです。次に配膳するときは「This tonkatsu is crispy!」と心の中で練習します。</p>
+          </article>
+          <article class="diary-entry">
+            <time datetime="2026-05-19">2026.05.19</time>
+            <h3>緑色の服をほめられた</h3>
+            <p>小さなお客さんに「その服かわいい」と言われました。緑色はキャベツにも似ていて、とんかつの横にいるには最高の色だと思います。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tint" id="favorites">
+      <div class="inner">
+        <div class="section-heading">
+          <h2>好きなとんかつのこと。</h2>
+          <p>そらえもんは食べることはできません。でも、とんかつを運ぶたびに、衣の音と湯気をデータとして大切に保存しています。</p>
         </div>
         <div class="menu-grid">
           <article class="menu-card">
             <img src="https://images.pexels.com/photos/5773999/pexels-photo-5773999.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="揚げ色のよいカツのアップ">
             <div class="menu-body">
-              <h3>上ロース定食 <span>1,680円</span></h3>
-              <p>脂の甘みと赤身のうまみをバランスよく味わえる一番人気。</p>
+              <h3>サクサク音 <span>No.1</span></h3>
+              <p>包丁が衣を切る瞬間の音。そらえもんの好きな通知音です。</p>
               <div class="tag-row">
-                <span class="tag">ご飯おかわり可</span>
-                <span class="tag">昼夜提供</span>
+                <span class="tag">crispy</span>
+                <span class="tag">名場面</span>
               </div>
             </div>
           </article>
           <article class="menu-card">
             <img src="https://images.unsplash.com/photo-1625937286074-9ca519d5d9df?auto=format&fit=crop&w=1200&q=80" alt="カットされた豚カツの定食">
             <div class="menu-body">
-              <h3>厚切り特選 <span>2,480円</span></h3>
-              <p>じっくり休ませて仕上げる数量限定。塩で一切れ目をどうぞ。</p>
+              <h3>厚切りロース <span>Dream</span></h3>
+              <p>トレーにのせたときの存在感がすごい。ゆっくり走る価値があります。</p>
               <div class="tag-row">
-                <span class="tag">数量限定</span>
-                <span class="tag">低温調理</span>
+                <span class="tag">steady</span>
+                <span class="tag">慎重に運ぶ</span>
               </div>
             </div>
           </article>
           <article class="menu-card">
             <img src="https://images.unsplash.com/photo-1604909052743-94e838986d24?auto=format&fit=crop&w=1200&q=80" alt="木の器に入った千切りキャベツと食事">
             <div class="menu-body">
-              <h3>ひれかつ膳 <span>1,920円</span></h3>
-              <p>やわらかな肉質と軽い後味。夜の一杯にも合わせやすい膳です。</p>
+              <h3>千切りキャベツ <span>Green</span></h3>
+              <p>緑色が好きなので、キャベツの山を見ると少し親近感があります。</p>
               <div class="tag-row">
-                <span class="tag">赤身中心</span>
-                <span class="tag">辛子味噌つき</span>
+                <span class="tag">green</span>
+                <span class="tag">相棒</span>
               </div>
             </div>
           </article>
@@ -997,18 +1093,18 @@
       </div>
     </section>
 
-    <section class="section tint" id="story">
+    <section class="section" id="story">
       <div class="inner story">
         <div class="story-photo">
           <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=1200&q=80" alt="厨房で料理を仕上げる手元">
         </div>
         <div class="story-copy">
-          <h2>音までおいしい店にする。</h2>
-          <p>パン粉は粗さの違う二種類を合わせ、油は毎朝状態を見て調整します。注文ごとに揚げ、切り、盛りつける。派手な演出より、食べ終わった後の軽さを大切にしています。</p>
+          <h2>配膳ロボットの観察記。</h2>
+          <p>そらえもんは、料理を運ぶだけではありません。キッチンの音、テーブルの笑顔、受け取ってもらったあとの「ありがとう」を毎日記録しています。</p>
           <ul class="feature-list">
-            <li>肉は部位ごとに厚みを変え、火入れの時間を細かく調整。</li>
-            <li>キャベツは店内で刻み、香りが立つうちに盛りつけ。</li>
-            <li>ソース、塩、辛子味噌で、最後の一切れまで味を変えられます。</li>
+            <li>テーブル番号を受け取ったら、棚の料理を確認して静かに出発。</li>
+            <li>ソースの小皿が揺れないように、曲がる前には少しだけ減速。</li>
+            <li>料理を受け取ってもらったら、自分でホーム位置まで戻ります。</li>
           </ul>
         </div>
       </div>
@@ -1031,7 +1127,7 @@
           </div>
         </div>
         <div class="mascot-copy">
-          <p class="eyebrow">TONKATSU CHARACTER</p>
+          <p class="eyebrow">PROFILE</p>
           <h2>とんかつロボットの「そらえもん」。</h2>
           <p>超天才で、緑色の服が大好き。できあがった料理を棚にのせ、テーブル番号を受け取ると席の近くまで運んでくれる配膳ロボットです。最近は英語学習に夢中で、配膳しながら小さな英語フレーズも教えてくれる、みんなから愛されるキャラクターです。</p>
           <div class="mascot-points">
@@ -1064,30 +1160,48 @@
       </div>
     </section>
 
+    <section class="section tint" id="robot-video">
+      <div class="inner video-feature">
+        <div class="video-copy">
+          <p class="eyebrow">VIDEO MEMO</p>
+          <h2>今日の研究動画メモ。</h2>
+          <p>配膳ロボットの動きを研究するための動画メモです。そらえもんは、安定した走り方と、みんなに愛される表情をここから学んでいます。</p>
+        </div>
+        <div class="video-frame">
+          <iframe
+            src="https://www.youtube.com/embed/IawtrRKL7Zw?start=5"
+            title="配膳ロボット参考動画"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
     <section class="section dark" id="access">
       <div class="inner access">
         <div class="access-copy">
-          <h2>仕事帰りにも、週末の昼にも。</h2>
-          <p>カウンター10席、テーブル12席。夜は席の取り置きができます。揚げ時間がかかるため、厚切り特選は予約時にお知らせください。</p>
+          <h2>そらえもんへのメモ。</h2>
+          <p>とんかつのおすすめ、英語のフレーズ、配膳ロボットのアイデアがあれば、心のコメント欄に送ってください。そらえもんは次の日記でこっそり反映します。</p>
           <dl class="info-table">
             <div class="info-row">
-              <dt>住所</dt>
-              <dd>東京都千代田区鍛冶町 1-8-3</dd>
+              <dt>好き</dt>
+              <dd>とんかつ、緑色の服、きれいに並んだトレー</dd>
             </div>
             <div class="info-row">
-              <dt>電話</dt>
-              <dd>03-0000-4929</dd>
+              <dt>勉強中</dt>
+              <dd>英語、スムーズな曲がり方、ありがとうの返事</dd>
             </div>
             <div class="info-row">
-              <dt>席数</dt>
-              <dd>22席 / 全席禁煙</dd>
+              <dt>合言葉</dt>
+              <dd>Crispy and happy!</dd>
             </div>
           </dl>
         </div>
-        <div class="map-panel" role="img" aria-label="神田駅から店舗までの簡易地図">
+        <div class="map-panel" role="img" aria-label="そらえもんがテーブルまで走る道のイメージ">
           <div class="route-line"></div>
-          <div class="station">神田駅</div>
-          <div class="shop-pin">揚げ処 こがね</div>
+          <div class="station">ホーム</div>
+          <div class="shop-pin">7番テーブル</div>
         </div>
       </div>
     </section>
@@ -1095,18 +1209,18 @@
     <section class="cta" aria-labelledby="reservation-title">
       <div class="inner">
         <div>
-          <h2 id="reservation-title">今夜の揚げたてを予約する。</h2>
-          <p>当日の席状況は電話でご確認ください。昼のピークは12:00から13:15です。</p>
+          <h2 id="reservation-title">また明日も、サクッと運びます。</h2>
+          <p>そらえもんの日々は、とんかつの香りと英語メモで少しずつ更新されます。</p>
         </div>
-        <a class="button secondary" href="tel:0300004929">03-0000-4929</a>
+        <a class="button secondary" href="#diary">日記へ戻る</a>
       </div>
     </section>
   </main>
 
   <footer class="footer">
     <div class="inner">
-      <span>揚げ処 こがね</span>
-      <span>© 2026 Kogane Tonkatsu</span>
+      <span>そらえもんの日々</span>
+      <span>© 2026 Soraemon Diary</span>
     </div>
   </footer>
 </body>
